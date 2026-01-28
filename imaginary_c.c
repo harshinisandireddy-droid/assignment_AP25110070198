@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Employee {
+    int id;
+    char name[20];
+    float salary;
+};
+
+int main() {
+    struct Employee *emp;
+    int n, i;
+
+    printf("Enter number of employees: ");
+    scanf("%d", &n);
+
+    // Dynamic memory allocation
+    emp = (struct Employee *)malloc(n * sizeof(struct Employee));
+
+    // Input employee details
+    for (i = 0; i < n; i++) {
+        printf("\nEnter details of Employee %d\n", i + 1);
+        printf("ID: ");
+        scanf("%d", &emp[i].id);
+        printf("Name: ");
+        scanf("%s", emp[i].name);
+        printf("Salary: ");
+        scanf("%f", &emp[i].salary);
+    }
+
+    // Display employee details
+    printf("\nEmployee Information:\n");
+    for (i = 0; i < n; i++) {
+        printf("\nID: %d", emp[i].id);
+        printf("\nName: %s", emp[i].name);
+        printf("\nSalary: %.2f\n", emp[i].salary);
+    }
+
+    free(emp); // Free memory
+    return 0;
+}
